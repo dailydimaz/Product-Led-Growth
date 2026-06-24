@@ -108,6 +108,25 @@ e.g. "count open deals by stage").
 
 ---
 
+## Plunk — `@ignytehq/plunk-mcp` (env `PLUNK_API_KEY`)
+
+The open-source lifecycle email and automation platform. Requires `PLUNK_API_KEY` (and optionally `PLUNK_PUBLIC_KEY` for event tracking).
+
+**Tool groups:**
+- **Transactional:** `send_transactional`, `track_event`, `verify_email`
+- **Contacts:** CRUD, bulk import/subscribe/unsubscribe/delete, custom field management
+- **Campaigns:** Create, update, send, cancel, test, stats
+- **Segments:** Dynamic + static segments, member management, recompute
+- **Workflows:** Steps, transitions, executions (the automation builder)
+- **Templates:** Reusable email templates referenced from sends/campaigns/workflows
+- **Analytics & Events:** Timeseries, top campaigns, top events, history
+
+**Used in PLG for:** sending transactional onboarding nudges, building complex lifecycle workflows directly in Plunk, broadcasting campaigns to dynamic segments (e.g., "signed up this month"), and firing `track_event` to trigger automations. Unlike Resend which relies on external workflow engines, Plunk handles the drip timing and logic internally.
+
+**Guardrail:** sending any email or modifying workflows/campaigns is permission-required. Confirm recipient(s), subject, and content.
+
+---
+
 ## Resend — `resend-mcp` (env `RESEND_API_KEY`)
 
 The sending muscle. Pairs with React Email for templates; drip *timing/branching*

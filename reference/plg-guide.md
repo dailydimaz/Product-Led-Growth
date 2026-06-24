@@ -103,7 +103,7 @@ Startups under $10M ARR should avoid expensive data pipelines and focus on nativ
 * **PostHog:** Core analytics, feature flags, event tracking, and finding the "Aha!" moment.
 * **Clerk:** Auth, SSO, and team/organization multiplayer management.
 * **Stripe:** Self-serve billing and customer portal upgrades.
-* **Resend:** API-first lifecycle and transactional emails built with React Email, triggered directly by product events. Because Resend is a pure sending layer (the "muscle"), drip timing and conditional logic (e.g., "wait 3 days, then nudge if the user hasn't invited their team") are orchestrated in code via a durable workflow engine such as Trigger.dev or Inngest. It also exposes an MCP server roadmap, enabling AI agents to generate and send hyper-personalized lifecycle emails autonomously.
+* **Plunk:** An open-source lifecycle email and automation platform. Unlike pure sending layers, Plunk handles the drip timing, segments, and workflow logic internally, triggered by product events via MCP. (Alternatively, **Resend** can be used as a hosted API-first transactional email sender).
 * **Twenty:** An open-source CRM that natively integrates via MCP to route accounts. (Alternatively, **Attio** can be used as a hosted PLG-native CRM).
 
 ### Migrating to the Enterprise Modern Data Stack (MDS)

@@ -73,7 +73,7 @@ SKILL.md.
 3. **Activation incentives (optional).** Create a coupon / promotion code for an
    onboarding offer.
 4. **Trigger from product.** In PostHog, detect the paywall/limit event; surface
-   the upgrade link in-app and via Resend (playbook 6).
+   the upgrade link in-app and via Plunk or Resend (playbook 6).
 5. **Confirm every write.** Creating prices, links, coupons, or changing
    subscriptions is permission-required; state sandbox vs. live mode.
 6. **Measure:** free→paid conversion rate and TTV-to-paywall in PostHog.
@@ -91,25 +91,22 @@ SKILL.md.
    activation gaps (seats bought vs. seats active — the "shelfware" signal).
 4. **Act in Twenty.** Create tasks/notes for at-risk or expansion-ready accounts;
    route expansion candidates to the PLS list.
-5. **Nudge via Resend** (playbook 6) for self-serve expansion or re-engagement.
+5. **Nudge via Plunk** (playbook 6) for self-serve expansion or re-engagement.
 6. Never modify subscriptions/prices without explicit confirmation.
 
 ---
 
 ## 6. Build lifecycle / onboarding emails & nudges  {#6}
-**MCPs:** Resend + PostHog (+ a workflow engine in the app for timing).
+**MCPs:** Plunk + PostHog (Plunk handles workflow timing natively).
 
 1. **Trigger on product events.** PostHog detects state (e.g., "created a project
-   but hasn't invited team in 3 days"). Drip *timing/branching* belongs in
-   Trigger.dev/Inngest in the app, not in Resend.
+   but hasn't invited team in 3 days"). Set up the drip *timing/branching* directly in a Plunk workflow (or externally if using Resend).
 2. **Draft the email** (React Email template recommended). Personalize toward the
    "Aha!" action. Show the draft and **confirm before sending.**
-3. **Send** with Resend (`send` for one, `batch send` for many; `broadcast` for a
-   campaign — confirm audience/segment size first).
+3. **Send/Automate** with Plunk (trigger an event for workflows, or use `send_transactional`). Confirm audiences/segment sizes first for campaigns.
 4. **Tag for attribution.** Include a `posthog_distinct_id` tag and a campaign
    tag so events can be tied back to the user.
-5. **Wire webhooks.** Configure Resend webhooks (`email.opened`, `email.clicked`)
-   → your endpoint → `posthog.capture` so email engagement becomes PostHog events.
+5. **Sync Events.** Use Plunk's built-in event tracking or configure webhooks so email engagement becomes PostHog events.
 6. **Differentiate links** with query params (`?position=hero_cta&action=...`) so
    PostHog can compare which CTA drove activation.
 7. **Measure:** does email engagement correlate with higher Week-N retention?
@@ -117,7 +114,7 @@ SKILL.md.
 ---
 
 ## 7. Engineer & measure a viral loop  {#7}
-**MCPs:** Clerk (build) + PostHog (measure) + Resend (invite delivery).
+**MCPs:** Clerk (build) + PostHog (measure) + Plunk (invite delivery).
 
 1. **Choose the loop** (see plg-guide.md): Multiplayer Collaborative, Artifact &
    Exposure, or Network/Communication — based on where the product's output goes.
@@ -125,7 +122,7 @@ SKILL.md.
    `list_clerk_sdk_snippets` (bundles `organizations`, `b2b-saas`) to generate
    correct organization + member-invitation code. Make invited-user signup
    frictionless (drop them into the shared asset).
-3. **Deliver invites** via Resend (transactional invite email).
+3. **Deliver invites** via Plunk (transactional invite email).
 4. **Instrument in PostHog** the loop's component metrics:
    - Invitation Rate (% active users who invite),
    - Branching factor (invites per inviter),

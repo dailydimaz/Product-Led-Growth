@@ -3,7 +3,7 @@
 A portable [Claude](https://claude.com) skill that turns Product-Led Growth
 strategy into executable, cross-tool workflows. It orchestrates five MCP
 ([Model Context Protocol](https://modelcontextprotocol.io)) servers —
-**PostHog, Stripe, Twenty (or Attio), Resend, and Clerk** — to run an end-to-end PLG engine:
+**PostHog, Stripe, Twenty (or Attio), Plunk (or Resend), and Clerk** — to run an end-to-end PLG engine:
 find the "Aha!" moment, score and route Product Qualified Leads (PQLs), set up
 self-serve monetization, send lifecycle email, engineer viral loops, and review
 growth metrics.
@@ -34,7 +34,7 @@ the defaults are shown in parentheses.
 | Product analytics | PostHog | Mixpanel / Amplitude | Aha! moment, cohorts, retention, funnels, A/B tests, PQL signals |
 | Billing | Stripe | Lago / Lotus | Self-serve monetization, paywalls, trials, expansion/NDR |
 | CRM | Twenty | Attio | PQL routing, Product-Led Sales pipeline |
-| Lifecycle email | Resend | Plunk / Novu | Onboarding/nudge emails, broadcasts, engagement attribution |
+| Lifecycle email | Plunk | Resend / Novu | Onboarding/nudge emails, broadcasts, engagement attribution |
 | Auth / invite patterns | Clerk | SuperTokens / Logto | Implementation snippets for the invite mechanics behind viral loops |
 
 ## The 9 playbooks
@@ -67,6 +67,7 @@ available and adapts). Official endpoints:
 - Stripe — `https://mcp.stripe.com`
 - Twenty — `twenty-crm-mcp-server` (npx or node index.js, needs `TWENTY_API_KEY`)
 - Attio — `https://mcp.attio.com/mcp`
+- Plunk — `@ignytehq/plunk-mcp` (npx, needs `PLUNK_API_KEY`)
 - Resend — `resend-mcp` (npx, needs `RESEND_API_KEY`)
 - Clerk — `https://mcp.clerk.com/mcp`
 
