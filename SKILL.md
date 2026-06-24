@@ -2,7 +2,7 @@
 name: product-led-growth
 description: >-
   Operate a Product-Led Growth (PLG) engine end-to-end by orchestrating the
-  PostHog, Stripe, Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk) MCP servers. Use this skill when the
+  PostHog, Polar (or Stripe), Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk) MCP servers. Use this skill when the
   user wants to find or validate an "Aha!" moment, build activation/retention
   cohorts, design A/B tests, define/score/route Product Qualified Leads (PQLs),
   set up self-serve monetization, paywalls, trials, or expansion (NDR), build
@@ -27,7 +27,7 @@ monetize, route, and message that motion.
 | MCP | Endpoint | Role in PLG | Kind |
 |-----|----------|-------------|------|
 | **PostHog** | `https://mcp.posthog.com/mcp` | Product analytics: cohorts, retention, funnels, HogQL/SQL, feature flags, experiments (A/B), error tracking. The instrument that finds the "Aha!" moment and detects PQL thresholds. | Live data + actions |
-| **Stripe** | `https://mcp.stripe.com` | Self-serve monetization: customers, subscriptions, products/prices, payment links, invoices, coupons/promo codes, billing portal, refunds. The money layer for paywalls, trials, and expansion. | Live data + actions |
+| **Polar** | `https://mcp.polar.sh/mcp/polar-mcp` | Open-source Merchant of Record and billing platform: manage products, subscriptions, customers, checkouts, refunds, and analytics. The modern money layer for paywalls and SaaS. (Alternative: **Stripe**) | Live data + actions |
 | **Twenty** | `twenty-crm-mcp-server` | PLG-native CRM: people/company/deal records, notes, tasks. Where PQLs are routed and Product-Led Sales (PLS) happens. (Alternative: **Attio**) | Live data + actions |
 | **Plunk** | `@ignytehq/plunk-mcp` (`PLUNK_API_KEY`) | Open-source lifecycle email & automation platform: transactional emails, campaigns, workflows, segments, and events. The "muscle" and brain for onboarding nudges and campaigns. (Alternative: **Resend**) | Live data + actions |
 | **Supabase** | `OAuth 2.1` | Complete Auth infrastructure: Native MCP Authentication via OAuth 2.1, Row Level Security (RLS), and identity linking. Authenticates AI agents directly using your existing user base. (Alternative: **Clerk**) | Auth + Security |
@@ -48,7 +48,7 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
    available (e.g., draft the analysis in PostHog even if Stripe isn't linked).
 2. **Read-before-write.** Always query/inspect first, summarize what you found,
    and get explicit confirmation before any side-effectful call — sending email
-   (Plunk/Resend), creating/updating billing (Stripe), creating/updating records
+   (Plunk/Resend), creating/updating billing (Polar/Stripe), creating/updating records
    (Twenty/Attio), or shipping a feature flag/experiment (PostHog). These are
    permission-required actions.
 3. **Pick the matching workflow** from the index below and follow the playbook.
@@ -62,12 +62,12 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 |-----------------------|--------------|----------|
 | Find / validate the "Aha!" moment | PostHog | `playbooks.md#1` |
 | Prove causation with an A/B test | PostHog | `playbooks.md#2` |
-| Define, score & route PQLs | PostHog + Twenty (+ Stripe) | `playbooks.md#3` |
-| Build self-serve monetization & paywalls | Stripe (+ PostHog) | `playbooks.md#4` |
-| Track expansion / NDR & reduce churn | Stripe + PostHog + Twenty | `playbooks.md#5` |
+| Define, score & route PQLs | PostHog + Twenty (+ Polar) | `playbooks.md#3` |
+| Build self-serve monetization & paywalls | Polar (+ PostHog) | `playbooks.md#4` |
+| Track expansion / NDR & reduce churn | Polar + PostHog + Twenty | `playbooks.md#5` |
 | Build lifecycle / onboarding emails & nudges | Plunk + PostHog | `playbooks.md#6` |
 | Engineer & measure a viral loop | Supabase (auth/build) + PostHog (measure) + Plunk (invite) | `playbooks.md#7` |
-| Run a weekly PLG metrics review | PostHog + Stripe + Twenty | `playbooks.md#8` |
+| Run a weekly PLG metrics review | PostHog + Polar + Twenty | `playbooks.md#8` |
 | Transition to Product-Led Sales (PLS) | Twenty + PostHog | `playbooks.md#9` |
 
 ## Core PLG metrics (definitions used throughout)

@@ -35,6 +35,22 @@ downstream actions.
 
 ---
 
+## Polar — `https://mcp.polar.sh/mcp/polar-mcp` (or `polar-sandbox`)
+
+The open-source Merchant of Record and modern billing platform. Accessible via remote MCP connection.
+
+**Tool groups:**
+- **Products & Pricing:** create/update products, prices, and benefits.
+- **Customers & Subscriptions:** manage subscribers, checkouts, and customer state.
+- **Orders & Refunds:** process orders and issue refunds.
+- **Analytics:** get revenue metrics, subscriber counts, and MRR.
+
+**Used in PLG for:** creating self-serve paywalls, managing access to premium features (benefits), analyzing revenue churn/expansion, and handling billing updates programmatically based on usage signals.
+
+**Guardrail:** any write action affecting money (creating prices, updating subscriptions, issuing refunds) is strictly permission-required. Confirm the environment (sandbox vs production) before taking action.
+
+---
+
 ## Stripe — `https://mcp.stripe.com`
 
 The money layer. OAuth-based; sandbox and live mode are managed separately —
