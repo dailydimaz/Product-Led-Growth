@@ -47,20 +47,19 @@ SKILL.md.
 ---
 
 ## 3. Define, score & route PQLs  {#3}
-**MCPs:** PostHog (signal) + Attio (route) + Stripe (firmographic/billing context).
+**MCPs:** PostHog (signal) + Twenty (route) + Stripe (firmographic/billing context).
 
 1. **Define the PQL rule** at the intersection of: Product Value (past "Aha!"),
    Customer Profile (ICP fit), Intent (hit a limit / viewed pricing / clicked
    "Contact Sales").
 2. **Compute scores in PostHog** via HogQL — output a 0–100 score per account
    from usage signals; optionally enrich with Stripe (plan, MRR) and firmographics.
-3. **Sync to Attio.** For each qualifying account, `upsert-record` the company/
+3. **Sync to Twenty (or Attio).** For each qualifying account, create or update the company/
    person with the PQL score and key usage attributes. *Confirm before writing.*
 4. **Route into the pipeline.** When score crosses the threshold (e.g., 85),
-   `add-record-to-list` to the PLS pipeline and `create-task` for the AE with the
-   usage context. Optionally `create-note` summarizing the account's behavior.
-5. **Close the loop:** track PQL→opportunity→won conversion (Attio
-   `run-basic-report`) and feed it back to tune the threshold.
+   route to the PLS pipeline and create a task for the AE with the
+   usage context. Optionally create a note summarizing the account's behavior.
+5. **Close the loop:** track PQL→opportunity→won conversion (via CRM reporting) and feed it back to tune the threshold.
 
 ---
 
@@ -82,7 +81,7 @@ SKILL.md.
 ---
 
 ## 5. Track expansion / NDR & reduce churn  {#5}
-**MCPs:** Stripe + PostHog + Attio.
+**MCPs:** Stripe + PostHog + Twenty.
 
 1. **Pull revenue state** from Stripe: active subscriptions, seat counts, MRR,
    recent invoices, cancellations.
@@ -90,7 +89,7 @@ SKILL.md.
    churn) / starting MRR`. Flag accounts <100%.
 3. **Diagnose with PostHog.** For shrinking accounts, check usage decline /
    activation gaps (seats bought vs. seats active — the "shelfware" signal).
-4. **Act in Attio.** Create tasks/notes for at-risk or expansion-ready accounts;
+4. **Act in Twenty.** Create tasks/notes for at-risk or expansion-ready accounts;
    route expansion candidates to the PLS list.
 5. **Nudge via Resend** (playbook 6) for self-serve expansion or re-engagement.
 6. Never modify subscriptions/prices without explicit confirmation.
@@ -141,28 +140,28 @@ SKILL.md.
 ---
 
 ## 8. Weekly PLG metrics review  {#8}
-**MCPs:** PostHog + Stripe + Attio.
+**MCPs:** PostHog + Stripe + Twenty.
 
 1. **Acquisition & activation** (PostHog): new signups, activation rate, TTV.
 2. **Retention** (PostHog): Week-N curves vs. prior cohorts; flag regressions.
 3. **Virality** (PostHog): K-factor, viral cycle time, invite funnel.
 4. **Revenue** (Stripe): new MRR, expansion, churn, NDR, free→paid rate.
-5. **Pipeline** (Attio): PQLs created, routed, converted (`run-basic-report`).
+5. **Pipeline** (Twenty): PQLs created, routed, converted.
 6. **Synthesize** into a short scorecard: wins, misses, and 2–3 prioritized
    actions. Offer to schedule this as a recurring report.
 
 ---
 
 ## 9. Transition to Product-Led Sales (PLS)  {#9}
-**MCPs:** Attio + PostHog.
+**MCPs:** Twenty + PostHog.
 
 1. **Confirm the trigger:** credit-card ceiling (>$5k/yr deals), procurement/
    security wall, or Shadow-IT consolidation (fragmented usage in one domain —
    detect via PostHog by email domain).
-2. **Stand up the pipeline** in Attio: a PLS list with stages; attributes for PQL
+2. **Stand up the pipeline** in Twenty: a PLS view or list with stages; attributes for PQL
    score and usage signals.
 3. **Feed it** from playbook 3 (PQL routing).
-4. **Equip AEs** with usage context (PostHog summaries logged as Attio notes) so
+4. **Equip AEs** with usage context (PostHog summaries logged as Twenty notes) so
    they consult ("I noticed 15 new users but no security setup") rather than pitch.
 5. **Measure lift:** compare win rate / ACV of PLS-touched accounts vs. the
    self-serve baseline to quantify incremental value (the basis for quotas).

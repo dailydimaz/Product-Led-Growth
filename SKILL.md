@@ -2,7 +2,7 @@
 name: product-led-growth
 description: >-
   Operate a Product-Led Growth (PLG) engine end-to-end by orchestrating the
-  PostHog, Stripe, Attio, Resend, and Clerk MCP servers. Use this skill when the
+  PostHog, Stripe, Twenty (or Attio), Resend, and Clerk MCP servers. Use this skill when the
   user wants to find or validate an "Aha!" moment, build activation/retention
   cohorts, design A/B tests, define/score/route Product Qualified Leads (PQLs),
   set up self-serve monetization, paywalls, trials, or expansion (NDR), build
@@ -28,7 +28,7 @@ monetize, route, and message that motion.
 |-----|----------|-------------|------|
 | **PostHog** | `https://mcp.posthog.com/mcp` | Product analytics: cohorts, retention, funnels, HogQL/SQL, feature flags, experiments (A/B), error tracking. The instrument that finds the "Aha!" moment and detects PQL thresholds. | Live data + actions |
 | **Stripe** | `https://mcp.stripe.com` | Self-serve monetization: customers, subscriptions, products/prices, payment links, invoices, coupons/promo codes, billing portal, refunds. The money layer for paywalls, trials, and expansion. | Live data + actions |
-| **Attio** | `https://mcp.attio.com/mcp` | PLG-native CRM: people/company/deal records, lists (pipelines), notes, tasks, reporting. Where PQLs are routed and Product-Led Sales (PLS) happens. | Live data + actions |
+| **Twenty** | `twenty-crm-mcp-server` | PLG-native CRM: people/company/deal records, notes, tasks. Where PQLs are routed and Product-Led Sales (PLS) happens. (Alternative: **Attio**) | Live data + actions |
 | **Resend** | `resend-mcp` (`RESEND_API_KEY`) | Lifecycle email: send/batch/list emails, contacts, audiences, segments, broadcasts, topics, webhooks. The "muscle" that delivers onboarding nudges and campaigns. | Live data + actions |
 | **Clerk** | `https://mcp.clerk.com/mcp` | Auth, organizations, and invitation **implementation patterns** (SDK snippets/bundles). Clerk's MCP is a *developer-assistant* server, not a live workspace data server. Use it to build the multiplayer/invite mechanics that power viral loops. | Code snippets only |
 
@@ -50,7 +50,7 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 2. **Read-before-write.** Always query/inspect first, summarize what you found,
    and get explicit confirmation before any side-effectful call — sending email
    (Resend), creating/updating billing (Stripe), creating/updating records
-   (Attio), or shipping a feature flag/experiment (PostHog). These are
+   (Twenty/Attio), or shipping a feature flag/experiment (PostHog). These are
    permission-required actions.
 3. **Pick the matching workflow** from the index below and follow the playbook.
 4. **Close the loop.** Most PLG work is a relay: analytics → action → measure.
@@ -63,13 +63,13 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 |-----------------------|--------------|----------|
 | Find / validate the "Aha!" moment | PostHog | `playbooks.md#1` |
 | Prove causation with an A/B test | PostHog | `playbooks.md#2` |
-| Define, score & route PQLs | PostHog + Attio (+ Stripe) | `playbooks.md#3` |
+| Define, score & route PQLs | PostHog + Twenty (+ Stripe) | `playbooks.md#3` |
 | Build self-serve monetization & paywalls | Stripe (+ PostHog) | `playbooks.md#4` |
-| Track expansion / NDR & reduce churn | Stripe + PostHog + Attio | `playbooks.md#5` |
+| Track expansion / NDR & reduce churn | Stripe + PostHog + Twenty | `playbooks.md#5` |
 | Build lifecycle / onboarding emails & nudges | Resend + PostHog | `playbooks.md#6` |
 | Engineer & measure a viral loop | Clerk (build) + PostHog (measure) + Resend (invite) | `playbooks.md#7` |
-| Run a weekly PLG metrics review | PostHog + Stripe + Attio | `playbooks.md#8` |
-| Transition to Product-Led Sales (PLS) | Attio + PostHog | `playbooks.md#9` |
+| Run a weekly PLG metrics review | PostHog + Stripe + Twenty | `playbooks.md#8` |
+| Transition to Product-Led Sales (PLS) | Twenty + PostHog | `playbooks.md#9` |
 
 ## Core PLG metrics (definitions used throughout)
 

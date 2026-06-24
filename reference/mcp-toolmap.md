@@ -63,6 +63,22 @@ permission-required action — confirm first, prefer sandbox unless told otherwi
 
 ---
 
+## Twenty — `twenty-crm-mcp-server`
+
+The open-source, PLG-native CRM. Node.js MCP server requiring `TWENTY_API_KEY`.
+
+**Tools (selected):**
+- **People Operations:** `create_person`, `get_person`, `update_person`, `list_people`, `delete_person`.
+- **Company Operations:** `create_company`, `get_company`, `update_company`, `list_companies`, `delete_company`.
+- **Task & Note Operations:** CRUD for tasks and notes (`create_task`, `create_note`, etc.).
+- **Metadata & Search:** `get_metadata_objects`, `get_object_metadata`, `search_records` (intelligent filtering and natural language queries).
+
+**Used in PLG for:** routing PQLs to standard objects (people/companies), searching across records to identify target accounts, logging product-usage context as notes, creating follow-up tasks, and discovering dynamic custom fields mapping to product metrics.
+
+**Guardrail:** any write (create/update/delete) is a permission-required action — confirm first. Automatically discovers custom fields via metadata.
+
+---
+
 ## Attio — `https://mcp.attio.com/mcp`
 
 The PLG-native CRM. OAuth; reads auto-approve, writes ask for confirmation.

@@ -3,7 +3,7 @@
 A portable [Claude](https://claude.com) skill that turns Product-Led Growth
 strategy into executable, cross-tool workflows. It orchestrates five MCP
 ([Model Context Protocol](https://modelcontextprotocol.io)) servers —
-**PostHog, Stripe, Attio, Resend, and Clerk** — to run an end-to-end PLG engine:
+**PostHog, Stripe, Twenty (or Attio), Resend, and Clerk** — to run an end-to-end PLG engine:
 find the "Aha!" moment, score and route Product Qualified Leads (PQLs), set up
 self-serve monetization, send lifecycle email, engineer viral loops, and review
 growth metrics.
@@ -29,13 +29,13 @@ product-led-growth/
 The skill stands on five capability layers. Any MCP that fills a layer works;
 the defaults are shown in parentheses.
 
-| Layer | Default MCP | Used for |
-|-------|-------------|----------|
-| Product analytics | PostHog | Aha! moment, cohorts, retention, funnels, A/B tests, PQL signals |
-| Billing | Stripe | Self-serve monetization, paywalls, trials, expansion/NDR |
-| CRM | Attio | PQL routing, Product-Led Sales pipeline |
-| Lifecycle email | Resend | Onboarding/nudge emails, broadcasts, engagement attribution |
-| Auth / invite patterns | Clerk | Implementation snippets for the invite mechanics behind viral loops |
+| Layer | Default MCP | Supported Alternative | Used for |
+|-------|-------------|-----------------------|----------|
+| Product analytics | PostHog | Mixpanel / Amplitude | Aha! moment, cohorts, retention, funnels, A/B tests, PQL signals |
+| Billing | Stripe | Lago / Lotus | Self-serve monetization, paywalls, trials, expansion/NDR |
+| CRM | Twenty | Attio | PQL routing, Product-Led Sales pipeline |
+| Lifecycle email | Resend | Plunk / Novu | Onboarding/nudge emails, broadcasts, engagement attribution |
+| Auth / invite patterns | Clerk | SuperTokens / Logto | Implementation snippets for the invite mechanics behind viral loops |
 
 ## The 9 playbooks
 
@@ -65,6 +65,7 @@ available and adapts). Official endpoints:
 
 - PostHog — `https://mcp.posthog.com/mcp`
 - Stripe — `https://mcp.stripe.com`
+- Twenty — `twenty-crm-mcp-server` (npx or node index.js, needs `TWENTY_API_KEY`)
 - Attio — `https://mcp.attio.com/mcp`
 - Resend — `resend-mcp` (npx, needs `RESEND_API_KEY`)
 - Clerk — `https://mcp.clerk.com/mcp`

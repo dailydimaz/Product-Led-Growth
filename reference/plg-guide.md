@@ -104,7 +104,7 @@ Startups under $10M ARR should avoid expensive data pipelines and focus on nativ
 * **Clerk:** Auth, SSO, and team/organization multiplayer management.
 * **Stripe:** Self-serve billing and customer portal upgrades.
 * **Resend:** API-first lifecycle and transactional emails built with React Email, triggered directly by product events. Because Resend is a pure sending layer (the "muscle"), drip timing and conditional logic (e.g., "wait 3 days, then nudge if the user hasn't invited their team") are orchestrated in code via a durable workflow engine such as Trigger.dev or Inngest. It also exposes an MCP server roadmap, enabling AI agents to generate and send hyper-personalized lifecycle emails autonomously.
-* **Attio:** A PLG-native CRM that natively ingests product data to route accounts.
+* **Twenty:** An open-source CRM that natively integrates via MCP to route accounts. (Alternatively, **Attio** can be used as a hosted PLG-native CRM).
 
 ### Migrating to the Enterprise Modern Data Stack (MDS)
 Triggered at ~$10M–$15M ARR or high data volume when API rate limits break native integrations.
