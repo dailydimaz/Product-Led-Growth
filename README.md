@@ -1,10 +1,10 @@
 # Product-Led Growth (PLG) — Claude Skill
 
 A portable [Claude](https://claude.com) skill that turns Product-Led Growth
-strategy into executable, cross-tool workflows. It orchestrates five MCP
+strategy into executable, cross-tool workflows. It orchestrates six MCP
 ([Model Context Protocol](https://modelcontextprotocol.io)) servers —
-**PostHog, Polar (or Stripe), Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk)** — to run an end-to-end PLG engine:
-find the "Aha!" moment, score and route Product Qualified Leads (PQLs), set up
+**Ahrefs, PostHog, Polar (or Stripe), Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk)** — to run an end-to-end PLG engine:
+drive organic acquisition, find the "Aha!" moment, score and route Product Qualified Leads (PQLs), set up
 self-serve monetization, send lifecycle email, engineer viral loops, and review
 growth metrics.
 
@@ -31,6 +31,7 @@ the defaults are shown in parentheses.
 
 | Layer | Default MCP | Supported Alternative | Used for |
 |-------|-------------|-----------------------|----------|
+| Acquisition & SEO | Ahrefs | - | Keyword research, competitor analysis, site audits, and tracking programmatic SEO for top-of-funnel PLG |
 | Product analytics | PostHog | Mixpanel / Amplitude | Aha! moment, cohorts, retention, funnels, A/B tests, PQL signals |
 | Billing | Polar | Stripe / Lago | Self-serve monetization, paywalls, trials, expansion/NDR |
 | CRM | Twenty | Attio | PQL routing, Product-Led Sales pipeline |
@@ -63,6 +64,7 @@ skills, ensuring `SKILL.md` sits at its root.
 Then connect whichever MCP servers you want to use (the skill checks which are
 available and adapts). Official endpoints:
 
+- Ahrefs — `https://api.ahrefs.com/mcp/mcp` (needs Ahrefs API Key with `MCP` scope)
 - PostHog — `https://mcp.posthog.com/mcp`
 - Polar — `https://mcp.polar.sh/mcp/polar-mcp` (needs `POLAR_ACCESS_TOKEN` passed as header)
 - Stripe — `https://mcp.stripe.com`

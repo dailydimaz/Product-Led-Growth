@@ -100,6 +100,7 @@ Scoring PQLs at scale requires a Modern Data Stack to merge product, billing, an
 
 ### The Startup Stack (Budget-Friendly)
 Startups under $10M ARR should avoid expensive data pipelines and focus on native integrations (point-to-point architecture):
+* **Ahrefs:** The Acquisition layer to validate search demand, uncover competitor keywords, and track the SEO performance of programmatic content.
 * **PostHog:** Core analytics, feature flags, event tracking, and finding the "Aha!" moment.
 * **Supabase Auth:** Complete open-source Auth layer handling SSO, team/organization multiplayer, and acting as the OAuth 2.1 authentication server for MCP AI agents. (Alternatively, **Clerk** can be used as a hosted Auth provider).
 * **Polar:** Open-source Merchant of Record for self-serve billing, customer portal upgrades, and managing access to premium benefits. (Alternatively, **Stripe** can be used as a payment processor).

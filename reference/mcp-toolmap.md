@@ -6,6 +6,26 @@ use the closest equivalent. Verified against vendor docs (June 2026).
 
 ---
 
+## Ahrefs — `https://api.ahrefs.com/mcp/mcp`
+
+The premier SEO and acquisition layer. Connects AI agents to Ahrefs' world-class search data.
+
+**Tool groups:**
+- **Site Explorer:** `get-domain-rating`, `get-organic-keywords`, `get-top-pages`, `get-organic-competitors`, `get-backlinks-stats`.
+- **Keywords Explorer:** `get-matching-terms`, `get-volume-history`, `get-search-suggestions`.
+- **Site Audit:** `get-issues`, `get-page-content`.
+- **Rank Tracker & SERP:** `get-serp-overview`, `get-overview`.
+
+**Used in PLG for:** 
+- Tracking the performance of programmatic SEO loops and UGC.
+- Analyzing competitor ranking to discover product feature gaps and positioning opportunities.
+- Validating search demand before building new features.
+- Ensuring the signup funnels and marketing pages are technically sound (Site Audit).
+
+**Guardrail:** Monitor API unit usage as queries consume credits. Stick to specific URL/keyword queries rather than broad dumps.
+
+---
+
 ## PostHog — `https://mcp.posthog.com/mcp`
 
 The instrument. Auth routes you to the correct region (US/EU). Some tools run

@@ -135,10 +135,11 @@ SKILL.md.
 ---
 
 ## 8. Weekly PLG metrics review  {#8}
-**MCPs:** PostHog + Polar + Twenty.
+**MCPs:** Ahrefs + PostHog + Polar + Twenty.
 
-1. **Acquisition & activation** (PostHog): new signups, activation rate, TTV.
-2. **Retention** (PostHog): Week-N curves vs. prior cohorts; flag regressions.
+1. **Acquisition & SEO** (Ahrefs): Domain Rating changes, top programmatic pages traffic, keyword ranking shifts.
+2. **Activation** (PostHog): new signups, activation rate, TTV.
+3. **Retention** (PostHog): Week-N curves vs. prior cohorts; flag regressions.
 3. **Virality** (PostHog): K-factor, viral cycle time, invite funnel.
 4. **Revenue** (Polar): new MRR, expansion, churn, NDR, free→paid rate.
 5. **Pipeline** (Twenty): PQLs created, routed, converted.
@@ -163,7 +164,17 @@ SKILL.md.
 
 ---
 
-### Universal guardrails (apply to every playbook)
+## 10. Monitor Organic Acquisition & Programmatic SEO Loops {#10}
+**MCPs:** Ahrefs + PostHog.
+
+1. **Track Organic Engine** (Ahrefs): Pull metrics on programmatic pages, templates, or UGC directories (e.g., using `get-top-pages` or `get-organic-keywords`).
+2. **Monitor Competitors** (Ahrefs): Fetch `get-organic-competitors` to identify gaps in your product positioning or feature set based on what target audiences are searching for.
+3. **Correlate with Product Activation** (PostHog): Segment users coming from organic search (UTMs or referrers) and track their funnel conversion to the "Aha!" moment.
+4. **Identify High-Intent Features** (Ahrefs): Use Keyword Explorer (`get-matching-terms`, `get-volume-history`) to validate search demand before the product team builds a new feature.
+
+---
+
+### Tool Guardrails (apply to every playbook)
 - Read before write; summarize findings; confirm before any side-effectful call.
 - Email send, billing write, CRM write, and flag/experiment ship are all
   permission-required.

@@ -2,7 +2,7 @@
 name: product-led-growth
 description: >-
   Operate a Product-Led Growth (PLG) engine end-to-end by orchestrating the
-  PostHog, Polar (or Stripe), Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk) MCP servers. Use this skill when the
+  Ahrefs, PostHog, Polar (or Stripe), Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk) MCP servers. Use this skill when the
   user wants to find or validate an "Aha!" moment, build activation/retention
   cohorts, design A/B tests, define/score/route Product Qualified Leads (PQLs),
   set up self-serve monetization, paywalls, trials, or expansion (NDR), build
@@ -26,6 +26,7 @@ monetize, route, and message that motion.
 
 | MCP | Endpoint | Role in PLG | Kind |
 |-----|----------|-------------|------|
+| **Ahrefs** | `https://api.ahrefs.com/mcp/mcp` | Acquisition & SEO: Keyword research, competitor ranking analysis, site audits, and monitoring top-of-funnel organic growth. | Live data |
 | **PostHog** | `https://mcp.posthog.com/mcp` | Product analytics: cohorts, retention, funnels, HogQL/SQL, feature flags, experiments (A/B), error tracking. The instrument that finds the "Aha!" moment and detects PQL thresholds. | Live data + actions |
 | **Polar** | `https://mcp.polar.sh/mcp/polar-mcp` | Open-source Merchant of Record and billing platform: manage products, subscriptions, customers, checkouts, refunds, and analytics. The modern money layer for paywalls and SaaS. (Alternative: **Stripe**) | Live data + actions |
 | **Twenty** | `twenty-crm-mcp-server` | PLG-native CRM: people/company/deal records, notes, tasks. Where PQLs are routed and Product-Led Sales (PLS) happens. (Alternative: **Attio**) | Live data + actions |
@@ -69,6 +70,7 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 | Engineer & measure a viral loop | Supabase (auth/build) + PostHog (measure) + Plunk (invite) | `playbooks.md#7` |
 | Run a weekly PLG metrics review | PostHog + Polar + Twenty | `playbooks.md#8` |
 | Transition to Product-Led Sales (PLS) | Twenty + PostHog | `playbooks.md#9` |
+| Monitor Organic Acquisition & Programmatic SEO | Ahrefs + PostHog | `playbooks.md#10` |
 
 ## Core PLG metrics (definitions used throughout)
 
