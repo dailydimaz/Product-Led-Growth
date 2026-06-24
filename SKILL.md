@@ -2,7 +2,7 @@
 name: product-led-growth
 description: >-
   Operate a Product-Led Growth (PLG) engine end-to-end by orchestrating the
-  PostHog, Stripe, Twenty (or Attio), Plunk (or Resend), and Clerk MCP servers. Use this skill when the
+  PostHog, Stripe, Twenty (or Attio), Plunk (or Resend), and Supabase (or Clerk) MCP servers. Use this skill when the
   user wants to find or validate an "Aha!" moment, build activation/retention
   cohorts, design A/B tests, define/score/route Product Qualified Leads (PQLs),
   set up self-serve monetization, paywalls, trials, or expansion (NDR), build
@@ -30,14 +30,13 @@ monetize, route, and message that motion.
 | **Stripe** | `https://mcp.stripe.com` | Self-serve monetization: customers, subscriptions, products/prices, payment links, invoices, coupons/promo codes, billing portal, refunds. The money layer for paywalls, trials, and expansion. | Live data + actions |
 | **Twenty** | `twenty-crm-mcp-server` | PLG-native CRM: people/company/deal records, notes, tasks. Where PQLs are routed and Product-Led Sales (PLS) happens. (Alternative: **Attio**) | Live data + actions |
 | **Plunk** | `@ignytehq/plunk-mcp` (`PLUNK_API_KEY`) | Open-source lifecycle email & automation platform: transactional emails, campaigns, workflows, segments, and events. The "muscle" and brain for onboarding nudges and campaigns. (Alternative: **Resend**) | Live data + actions |
-| **Clerk** | `https://mcp.clerk.com/mcp` | Auth, organizations, and invitation **implementation patterns** (SDK snippets/bundles). Clerk's MCP is a *developer-assistant* server, not a live workspace data server. Use it to build the multiplayer/invite mechanics that power viral loops. | Code snippets only |
+| **Supabase** | `OAuth 2.1` | Complete Auth infrastructure: Native MCP Authentication via OAuth 2.1, Row Level Security (RLS), and identity linking. Authenticates AI agents directly using your existing user base. (Alternative: **Clerk**) | Auth + Security |
 
-> Important accuracy note: Clerk's MCP exposes only `clerk_sdk_snippet` and
-> `list_clerk_sdk_snippets` (bundles like `b2b-saas`, `organizations`,
-> `waitlist`, `auth-basics`, `custom-flows`, `server-side`). It returns code
-> patterns — it does **not** read or write live user/org data. When a workflow
-> needs live user/org counts, get them from PostHog or the app's own database,
-> not from Clerk MCP.
+> Important accuracy note: Supabase Auth acts as the **authentication infrastructure**
+> for your MCP servers (via OAuth 2.1), rather than just providing discrete tools. Use it
+> (or libraries like FastMCP) to seamlessly authenticate AI agents using your existing
+> user base and automatically enforce Row Level Security (RLS) on all agent actions.
+> (If using the alternative **Clerk** MCP, it strictly exposes SDK code snippets).
 
 See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 `reference/playbooks.md` for full step-by-step cross-MCP recipes.
@@ -67,7 +66,7 @@ See `reference/mcp-toolmap.md` for the concrete tools each server exposes and
 | Build self-serve monetization & paywalls | Stripe (+ PostHog) | `playbooks.md#4` |
 | Track expansion / NDR & reduce churn | Stripe + PostHog + Twenty | `playbooks.md#5` |
 | Build lifecycle / onboarding emails & nudges | Plunk + PostHog | `playbooks.md#6` |
-| Engineer & measure a viral loop | Clerk (build) + PostHog (measure) + Plunk (invite) | `playbooks.md#7` |
+| Engineer & measure a viral loop | Supabase (auth/build) + PostHog (measure) + Plunk (invite) | `playbooks.md#7` |
 | Run a weekly PLG metrics review | PostHog + Stripe + Twenty | `playbooks.md#8` |
 | Transition to Product-Led Sales (PLS) | Twenty + PostHog | `playbooks.md#9` |
 

@@ -114,13 +114,11 @@ SKILL.md.
 ---
 
 ## 7. Engineer & measure a viral loop  {#7}
-**MCPs:** Clerk (build) + PostHog (measure) + Plunk (invite delivery).
+**MCPs:** Supabase (auth/build) + PostHog (measure) + Plunk (invite delivery).
 
 1. **Choose the loop** (see plg-guide.md): Multiplayer Collaborative, Artifact &
    Exposure, or Network/Communication — based on where the product's output goes.
-2. **Build the invite mechanic.** Use Clerk MCP `clerk_sdk_snippet` /
-   `list_clerk_sdk_snippets` (bundles `organizations`, `b2b-saas`) to generate
-   correct organization + member-invitation code. Make invited-user signup
+2. **Build the invite mechanic.** Use Supabase Auth to implement organization + member-invitation logic, enforce RLS policies, and securely tie AI agents to user identities via OAuth 2.1 (use Clerk if preferring an alternative). Make invited-user signup
    frictionless (drop them into the shared asset).
 3. **Deliver invites** via Plunk (transactional invite email).
 4. **Instrument in PostHog** the loop's component metrics:

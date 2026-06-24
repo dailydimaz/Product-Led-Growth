@@ -149,6 +149,20 @@ subject, and content; for broadcasts confirm the audience/segment size first.
 
 ---
 
+## Supabase Auth — `OAuth 2.1` (via FastMCP/Custom)
+
+The open-source Postgres-based backend platform. Supabase provides the **OAuth 2.1 Authentication Infrastructure** for MCP clients, letting AI agents authenticate using your existing user base.
+
+**Capabilities:**
+- **Standards-compliant OAuth 2.1:** Full implementation with PKCE.
+- **Automatic discovery:** MCP clients auto-configure using Supabase's discovery endpoints.
+- **Dynamic client registration:** MCP clients can register themselves automatically with your project.
+- **Row Level Security (RLS):** Your existing database RLS policies automatically apply to MCP clients and AI agents, restricting what data they can see or modify based on the authenticated user.
+
+**Used in PLG for:** Building secure, authenticated AI agents that act on behalf of your users. Implementing multiplayer/organization auth mechanics, identity linking, and SSO for viral loops. When building MCP servers (e.g., using FastMCP), it integrates seamlessly with Supabase Auth to handle token management automatically.
+
+---
+
 ## Clerk — `https://mcp.clerk.com/mcp`
 
 A **developer-assistant** server, not a data server. Streamable HTTP only.

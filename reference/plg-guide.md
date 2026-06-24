@@ -101,7 +101,7 @@ Scoring PQLs at scale requires a Modern Data Stack to merge product, billing, an
 ### The Startup Stack (Budget-Friendly)
 Startups under $10M ARR should avoid expensive data pipelines and focus on native integrations (point-to-point architecture):
 * **PostHog:** Core analytics, feature flags, event tracking, and finding the "Aha!" moment.
-* **Clerk:** Auth, SSO, and team/organization multiplayer management.
+* **Supabase Auth:** Complete open-source Auth layer handling SSO, team/organization multiplayer, and acting as the OAuth 2.1 authentication server for MCP AI agents. (Alternatively, **Clerk** can be used as a hosted Auth provider).
 * **Stripe:** Self-serve billing and customer portal upgrades.
 * **Plunk:** An open-source lifecycle email and automation platform. Unlike pure sending layers, Plunk handles the drip timing, segments, and workflow logic internally, triggered by product events via MCP. (Alternatively, **Resend** can be used as a hosted API-first transactional email sender).
 * **Twenty:** An open-source CRM that natively integrates via MCP to route accounts. (Alternatively, **Attio** can be used as a hosted PLG-native CRM).
